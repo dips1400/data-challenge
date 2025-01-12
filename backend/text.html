@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Database Initialization</title>
+  <script>
+    // Function to initialize the database by calling the API
+    function initializeDatabase() {
+      fetch('http://localhost:3000/api/initialize-database', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+      .then((response) => response.json())  // Parse as JSON
+      .then((data) => {
+        console.log('Success:', data);
+        alert(data.message || 'Database Initialized Successfully');
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+        alert('Error initializing the database');
+      });
+    }
+  </script>
+</head>
+<body>
+  <h1>Test API for Database Initialization</h1>
+  <button onclick="initializeDatabase()">Initialize Database</button>
+</body>
+</html>
